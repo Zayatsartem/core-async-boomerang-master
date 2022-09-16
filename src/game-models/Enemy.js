@@ -14,11 +14,11 @@ class Enemy {
   moveLeft() {
     // Идём влево.
     this.position -= 1;
+    return this.position;
   }
 
   die() {
     this.position = '?';
-    console.log('Enemy is dead!');
   }
 }
 

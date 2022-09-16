@@ -23,35 +23,36 @@ class Game {
     // Сборка всего необходимого (герой, враг(и), оружие)
     // в единую структуру данных
     this.track = (new Array(this.trackLength)).fill(' ');
+
     this.track[this.hero.position] = this.hero.skin;
-    this.track[this.enemy.position] = this.enemy.skin;
+    this.track[this.enemy.moveLeft()] = this.enemy.skin;
 
     if (this.hero.boomerang) {
       this.track[this.hero.boomerang.position] = this.hero.boomerang.skin;
       this.hero.boomerang.fly();
     }
-    if(this.track[this.enemy.position] === this.track[this.hero.boomerang.position]) {
-      this.enemy.die()
-    } 
   }
 
   check() {
-    if (this.hero.position === this.enemy.position) {
+    if (this.hero.position >= this.enemy.position) {
       this.hero.die();
     }
-    if (this.hero.boomerang.position === this.enemy.position) {
+    if (this.hero.boomerang.position >= this.enemy.position) {
       this.enemy.die();
+      this.enemy = new Enemy(this.trackLength - 1);
+      this.hero.boomerang.direction = 'left';
+    }
+    if (this.hero.boomerang.position <= this.hero.position) {
+      this.hero.boomerang.position = undefined;
     }
   }
 
   play() {
-    this.hero.boomerang.fly(this.trackLength)
-    runInteractiveConsole(this.hero)
+    runInteractiveConsole(this.hero);
     setInterval(() => {
       // Let's play!
       this.check();
       this.regenerateTrack();
-      this.enemy.moveLeft();
       this.view.render(this.track);
     }, 100);
   }

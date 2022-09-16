@@ -24,7 +24,7 @@ class Game {
   regenerateTrack() {
     // Сборка всего необходимого (герой, враг(и), оружие)
     // в единую структуру данных
-    this.track = (new Array(this.trackLength)).fill('_ ');
+    this.track = (new Array(this.trackLength)).fill(' ');
     this.track[this.hero.position] = this.hero.skin;
     this.track[this.enemy.moveLeft()] = this.enemy.skin;
 
@@ -40,8 +40,7 @@ class Game {
     }
     if (this.hero.boomerang.position >= this.enemy.position) {
       this.enemy.die();
-
-      this.enemy = new Enemy(this.trackLength - 1);
+      this.enemy = new Enemy(this.trackLength = Math.round(Math.random() * (70 - 35) + 35));
       this.hero.boomerang.direction = 'left';
     }
     if (this.hero.boomerang.position <= this.hero.position) {

@@ -9,7 +9,7 @@ class Score {
   }
 
   randomPos() {
-    return Math.floor(Math.random() * (70 - 20 + 1)) + 10;
+    return Math.round(Math.random() * (70 - 40) + 40);
   }
 
   pick() {
@@ -17,4 +17,4 @@ class Score {
   }
 }
 
-module.exports = Score;
+module.exports = Score

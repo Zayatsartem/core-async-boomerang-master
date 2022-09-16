@@ -26,15 +26,20 @@ class Game {
     this.track = (new Array(this.trackLength)).fill(' ');
     this.track[this.hero.position] = this.hero.skin;
     this.track[this.enemy.position] = this.enemy.skin;
+    this.track[this.hero.boomerang.position] = this.hero.boomerang.skin;
   }
 
   check() {
     if (this.hero.position === this.enemy.position) {
       this.hero.die();
     }
+    if (this.hero.boomerang.position === this.enemy.position) {
+      this.enemy.die();
+    }
   }
 
   play() {
+    this.hero.boomerang.fly(this.trackLength)
     setInterval(() => {
       // Let's play!
       this.check();

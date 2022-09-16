@@ -25,6 +25,7 @@ class Game {
     this.track = (new Array(this.trackLength)).fill(' ');
     this.track[this.hero.position] = this.hero.skin;
     this.track[this.enemy.position] = this.enemy.skin;
+
     if (this.hero.boomerang) {
       this.track[this.hero.boomerang.position] = this.hero.boomerang.skin;
       this.hero.boomerang.fly();
@@ -38,10 +39,14 @@ class Game {
     if (this.hero.position === this.enemy.position) {
       this.hero.die();
     }
+    if (this.hero.boomerang.position === this.enemy.position) {
+      this.enemy.die();
+    }
   }
 
   play() {
-    runInteractiveConsole(this.hero);
+    this.hero.boomerang.fly(this.trackLength)
+    runInteractiveConsole(this.hero)
     setInterval(() => {
       // Let's play!
       this.check();

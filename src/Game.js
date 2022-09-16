@@ -41,14 +41,14 @@ class Game {
   }
 
   play() {
-    runInteractiveConsole(this.hero)
+    runInteractiveConsole(this.hero);
     setInterval(() => {
       // Let's play!
       this.check();
       this.regenerateTrack();
       this.enemy.moveLeft();
       this.view.render(this.track);
-    }, 10);
+    }, 100);
   }
 }
 

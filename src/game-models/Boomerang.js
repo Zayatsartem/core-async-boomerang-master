@@ -9,16 +9,15 @@ class Boomerang {
     this.direction = 'right';
   }
 
-  fly(length) {
-      if (this.direction === 'right') {
-        this.moveRight();
-      } else {
-        this.moveLeft();
-      }
-      if (this.position + 1 === length + 1) {
-        this.direction = 'left';
-      }
-    };
+
+  fly() {
+    if (this.direction === 'right') {
+      this.moveRight();
+    } else if (this.direction === 'left') {
+      this.moveLeft();
+    }
+  }
+
 
   moveLeft() {
     // Идём влево.

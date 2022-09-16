@@ -39,22 +39,23 @@ class Game {
     }
     if (this.hero.boomerang.position >= this.enemy.position) {
       this.enemy.die();
+
       this.enemy = new Enemy(this.trackLength - 1);
       this.hero.boomerang.direction = 'left';
     }
     if (this.hero.boomerang.position <= this.hero.position) {
       this.hero.boomerang.position = undefined;
-    }
+ }
   }
 
   play() {
-    runInteractiveConsole(this.hero);
+    runInteractiveConsole(this.hero, (this.trackLength - 1))
     setInterval(() => {
       // Let's play!
       this.check();
       this.regenerateTrack();
       this.view.render(this.track);
-    }, 100);
+    }, 200);
   }
 }
 

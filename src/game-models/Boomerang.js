@@ -9,6 +9,7 @@ class Boomerang {
     this.direction = 'right';
   }
 
+
   fly() {
     if (this.direction === 'right') {
       this.moveRight();
@@ -16,6 +17,7 @@ class Boomerang {
       this.moveLeft();
     }
   }
+
 
   moveLeft() {
     // Идём влево.

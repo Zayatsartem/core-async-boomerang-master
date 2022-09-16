@@ -1,6 +1,6 @@
 // Наш герой.
 
-const Boomerang = require("./Boomerang");
+const Boomerang = require('./Boomerang');
 
 class Hero {
   constructor(position) {
@@ -19,6 +19,7 @@ class Hero {
     this.position += 1;
   }
 
+
   attack() {
     // Атакуем.
     // this.boomerang.fly();
@@ -30,7 +31,7 @@ class Hero {
     console.log('YOU ARE DEAD!💀');
     process.exit();
     // setInterval(() => {
-      process.exit();
+    process.exit();
     // }, 1000);
   }
 }

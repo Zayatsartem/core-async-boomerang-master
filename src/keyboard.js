@@ -11,7 +11,9 @@ const keypress = require('keypress');
 
 function runInteractiveConsole(hero) {
   const keyboard = {
-    space: () => hero.moveRight(),
+    a: () => hero.moveLeft(),
+    d: () => hero.moveRight(),
+    space: () => hero.attack(),
   };
   // Управление.
   // Настроим соответствия нажатий на клавиши и действий в игре.

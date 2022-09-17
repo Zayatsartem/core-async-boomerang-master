@@ -39,6 +39,7 @@ class Game {
     }
     if (this.hero.boomerang.position >= this.enemy.position) {
       this.enemy.die();
+      this.hero.score += 1;
 
       this.enemy = new Enemy(this.trackLength - 1);
       this.hero.boomerang.direction = 'left';

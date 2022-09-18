@@ -20,6 +20,10 @@ class Enemy {
   die() {
     this.position = '?';
   }
+
+  // randomPos() {
+  //   return this.position.Math.round(Math.random() * (70 - 40) + 40);
+  // }
 }
 
 module.exports = Enemy;

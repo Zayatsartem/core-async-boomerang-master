@@ -11,6 +11,7 @@ const Enemy = require('./game-models/Enemy');
 // const Boomerang = require('./game-models/Boomerang');
 const View = require('./View');
 const Spider = require('./game-models/Spider');
+const registerUser = require('../index');
 // Основной класс игры.
 // Тут будут все настройки, проверки, запуск.
 
@@ -93,7 +94,7 @@ class Game {
       this.check();
       this.regenerateTrack();
       this.view.render(this.track, this.hero.score, this.hero.scoreOfSpiders, this.hero.lives);
-    }, 40);
+    }, 100);
   }
 
   async init() {

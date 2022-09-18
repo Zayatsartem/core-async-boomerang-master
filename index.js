@@ -1,17 +1,26 @@
-const { sequelize, User } = require("./db/models");
+const { User } = require('./db/models');
 
-const run = async () => {
-  try {
-    await sequelize.authenticate();
-  } catch (err) {
-    console.log(err.message);
-  }
-  try {
-    const newUser = await User.create({
-
+const registerUser = async (heroName, heroScore) => {
+  const user = await User.findOne({
+    where: {
+      name: heroName,
+    },
+    raw: true,
+  });
+  if (user) {
+    await User.update({
+      score: heroScore,
+    }, {
+      where: {
+        name: heroName,
+      },
     });
-  } catch (error) {
-    console.log(error.message);
+  } else {
+    await User.create({
+      name: heroName,
+      score: heroScore,
+    });
   }
 };
-run();
+
+module.exports = registerUser;

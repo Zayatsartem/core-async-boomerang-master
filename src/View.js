@@ -1,7 +1,7 @@
 // Сделаем отдельный класс для отображения игры в консоли.
 class View {
   render(track, score, scoreOfSpiders) {
-    const yourTeamName = 'Elbrus';
+    const yourTeamName = 'The best team ever';
     // Тут всё рисуем.
     console.clear();
     console.log(track.join(''));

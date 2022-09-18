@@ -59,6 +59,9 @@ class Game {
       this.hero.boomerang.position = undefined;
     }
     if (this.hero.position === this.spider.position) {
+      music.play('./src/sounds/congratulations.wav', (err) => {
+        if (err) throw err;
+      });
       this.hero.scoreOfSpiders += 5;
       // Добавить очки герою за пауков
       this.spider.pick();

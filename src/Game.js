@@ -28,7 +28,7 @@ class Game {
   regenerateTrack() {
     // Сборка всего необходимого (герой, враг(и), оружие)
     // в единую структуру данных
-    this.track = (new Array(this.trackLength)).fill(' ');
+    this.track = (new Array(this.trackLength)).fill('  ');
     this.track[this.hero.position] = this.hero.skin;
     this.track[this.enemy.moveLeft()] = this.enemy.skin;
     this.track[this.spider.position] = this.spider.skin;

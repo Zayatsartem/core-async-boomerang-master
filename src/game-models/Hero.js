@@ -10,6 +10,7 @@ class Hero {
     this.name = '';
     this.score = 0;
     this.scoreOfSpiders = 0;
+    this.lives = 2;
   }
 
   moveLeft() {

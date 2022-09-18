@@ -1,20 +1,17 @@
 class Score {
   constructor() {
     // this.generateScore();
+    this.skin = '🕷';
     this.position = this.randomPos();
   }
 
-  generateCoin() {
-    this.coinPic = '🕷';
-  }
-
   randomPos() {
-    return Math.round(Math.random() * (70 - 40) + 40);
+    // Идём влево.
+    return Math.round(Math.random() * (40 - 20) + 20);
   }
 
   pick() {
     this.position = ' ';
   }
 }
-
-module.exports = Score
+module.exports = Score;

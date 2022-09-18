@@ -32,7 +32,7 @@ class Hero {
     this.skin = '💀';
     console.clear()
     console.log(`YOU ARE DEAD, ${this.name}!💀`);
-    console.log(`\nYour scores:\nEnemies killed - ${this.score}\nSpiders scores: ${this.scoreOfSpiders}\n\nTOTAL SCORE: ${this.score + this.scoreOfSpiders}`);
+    console.log(`\nYour scores:\nEnemies killed: ${this.score}\nSpiders scores: ${this.scoreOfSpiders}\n\nTOTAL SCORE: ${this.score + this.scoreOfSpiders}`);
     process.exit();
     // setInterval(() => {
     process.exit();

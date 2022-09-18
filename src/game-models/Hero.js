@@ -1,6 +1,7 @@
 // Наш герой.
 
 const Boomerang = require('./Boomerang');
+const registerUser = require('../../index');
 
 class Hero {
   constructor(position) {
@@ -29,7 +30,7 @@ class Hero {
     this.boomerang = new Boomerang(this.position + 1);
   }
 
-  die() {
+  async die() {
     this.skin = '💀';
     // eslint-disable-next-line no-console
     console.clear();
@@ -37,10 +38,8 @@ class Hero {
     console.log(`YOU ARE DEAD, ${this.name}!💀`);
     // eslint-disable-next-line no-console
     console.log(`\nYour scores:\nEnemies killed: ${this.score}\nSpiders scores: ${this.scoreOfSpiders}\n\nTOTAL SCORE: ${this.score + this.scoreOfSpiders}`);
+    await registerUser(this.name, (this.score + this.scoreOfSpiders));
     process.exit();
-    // setInterval(() => {
-    process.exit();
-    // }, 100);
   }
 }
 

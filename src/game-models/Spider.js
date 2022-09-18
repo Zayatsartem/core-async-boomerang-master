@@ -1,4 +1,4 @@
-class Score {
+class Spider {
   constructor() {
     // this.generateScore();
     this.skin = '🕷';
@@ -14,4 +14,4 @@ class Score {
     this.position = ' ';
   }
 }
-module.exports = Score;
+module.exports = Spider;

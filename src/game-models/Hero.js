@@ -9,6 +9,7 @@ class Hero {
     this.boomerang = new Boomerang(this.position);
     this.name = '';
     this.score = 0;
+    this.scoreOfSpiders = 0;
   }
 
   moveLeft() {
@@ -31,7 +32,7 @@ class Hero {
     this.skin = '💀';
     console.clear()
     console.log(`YOU ARE DEAD, ${this.name}!💀`);
-    console.log(`Your score is ${this.score}`);
+    console.log(`\nYour scores:\nEnemies killed: ${this.score}\nSpiders scores: ${this.scoreOfSpiders}\n\nTOTAL SCORE: ${this.score + this.scoreOfSpiders}`);
     process.exit();
     // setInterval(() => {
     process.exit();

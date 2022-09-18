@@ -9,8 +9,6 @@ const run = async () => {
   try {
     const newUser = await User.create({
 
-
-
     });
   } catch (error) {
     console.log(error.message);

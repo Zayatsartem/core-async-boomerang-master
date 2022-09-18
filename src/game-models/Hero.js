@@ -7,6 +7,9 @@ class Hero {
     this.skin = '🦝'; // можете использовать любые emoji '💃'
     this.position = position;
     this.boomerang = new Boomerang(this.position);
+    this.name = '';
+    this.score = 0;
+    this.scoreOfSpiders = 0;
   }
 
   moveLeft() {
@@ -27,7 +30,9 @@ class Hero {
 
   die() {
     this.skin = '💀';
-    console.log('YOU ARE DEAD!💀');
+    console.clear()
+    console.log(`YOU ARE DEAD, ${this.name}!💀`);
+    console.log(`\nYour scores:\nEnemies killed - ${this.score}\nSpiders scores: ${this.scoreOfSpiders}\n\nTOTAL SCORE: ${this.score + this.scoreOfSpiders}`);
     process.exit();
     // setInterval(() => {
     process.exit();

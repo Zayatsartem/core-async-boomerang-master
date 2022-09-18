@@ -10,6 +10,11 @@ class View {
     console.log('\n\n');
     console.log(`Created by "${yourTeamName}" with love`);
   }
+
+  renderRegister() {
+    console.clear();
+    console.log('Enter your name, hero:');
+  }
 }
 
 module.exports = View;

@@ -28,7 +28,7 @@ class Game {
   regenerateTrack() {
     // Сборка всего необходимого (герой, враг(и), оружие)
     // в единую структуру данных
-    this.track = (new Array(this.trackLength)).fill(' ');
+    this.track = (new Array(this.trackLength)).fill('  ');
     this.track[this.hero.position] = this.hero.skin;
     this.track[this.enemy.moveLeft()] = this.enemy.skin;
     this.track[this.spider.position] = this.spider.skin;
@@ -44,7 +44,16 @@ class Game {
       music.play('./src/sounds/twirl.wav', (err) => {
         if (err) throw err;
       });
+      this.hero.lives -= 1;
+      this.enemy.position = undefined;
+      this.enemy = new Enemy(this.trackLength - 1);
+      this.hero.position = 0;
+    }
+    if (this.hero.lives === 0) {
       this.hero.die();
+    }
+    if (this.hero.position < 0) {
+      this.hero.position = 0;
     }
     if (this.hero.boomerang.position >= this.enemy.position) {
       this.enemy.die();
@@ -83,7 +92,7 @@ class Game {
       // Let's play!
       this.check();
       this.regenerateTrack();
-      this.view.render(this.track, this.hero.score, this.hero.scoreOfSpiders);
+      this.view.render(this.track, this.hero.score, this.hero.scoreOfSpiders, this.hero.lives);
     }, 40);
   }
 

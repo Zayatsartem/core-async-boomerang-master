@@ -3,6 +3,7 @@
 // а передавать все нужные объекты прямо из run.js при инициализации new Game().
 
 const readlineSync = require('readline-sync');
+const music = require('play-sound')(args = {});
 
 const runInteractiveConsole = require('./keyboard');
 const Hero = require('./game-models/Hero');
@@ -40,10 +41,16 @@ class Game {
 
   check() {
     if (this.hero.position >= this.enemy.position) {
+      music.play('./src/sounds/twirl.wav', (err) => {
+        if (err) throw err;
+      });
       this.hero.die();
     }
     if (this.hero.boomerang.position >= this.enemy.position) {
       this.enemy.die();
+      music.play('./src/sounds/just-like-magic.wav', (err) => {
+        if (err) throw err;
+      });
       this.enemy = new Enemy(Math.round(Math.random() * (70 - 45) + 45));
       this.hero.score += 1;
       this.hero.boomerang.direction = 'left';

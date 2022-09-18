@@ -30,7 +30,7 @@ class Hero {
   die() {
     this.skin = '💀';
     console.clear()
-    console.log('YOU ARE DEAD!💀');
+    console.log(`YOU ARE DEAD, ${this.name}!💀`);
     console.log(`Your score is ${this.score}`);
     process.exit();
     // setInterval(() => {

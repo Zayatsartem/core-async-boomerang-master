@@ -1,6 +1,9 @@
 // Импортируем всё необходимое.
 // Или можно не импортировать,
 // а передавать все нужные объекты прямо из run.js при инициализации new Game().
+
+const readlineSync = require('readline-sync');
+
 const runInteractiveConsole = require('./keyboard');
 const Hero = require('./game-models/Hero');
 const Enemy = require('./game-models/Enemy');
@@ -54,8 +57,14 @@ class Game {
       setTimeout(() => {
         this.score = new Score();
       }, 4000);
-    }
   }
+   }
+
+  async register() {
+    this.view.renderRegister();
+    const name = await readlineSync.question('> ');
+    this.hero.name = name;
+    }
 
   play() {
     runInteractiveConsole(this.hero, (this.trackLength - 1));
@@ -65,6 +74,11 @@ class Game {
       this.regenerateTrack();
       this.view.render(this.track);
     }, 40);
+  }
+
+  async init() {
+    this.register();
+    await this.play();
   }
 }
 

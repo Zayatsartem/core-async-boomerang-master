@@ -30,8 +30,11 @@ class Hero {
 
   die() {
     this.skin = '💀';
-    console.clear()
+    // eslint-disable-next-line no-console
+    console.clear();
+    // eslint-disable-next-line no-console
     console.log(`YOU ARE DEAD, ${this.name}!💀`);
+    // eslint-disable-next-line no-console
     console.log(`\nYour scores:\nEnemies killed: ${this.score}\nSpiders scores: ${this.scoreOfSpiders}\n\nTOTAL SCORE: ${this.score + this.scoreOfSpiders}`);
     process.exit();
     // setInterval(() => {

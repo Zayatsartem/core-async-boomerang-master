@@ -3,7 +3,6 @@
 const readline = require('readline');
 const Game = require('./src/Game');
 
-
 // Инициализация игры с настройками.
 const game = new Game({
   trackLength: 70,

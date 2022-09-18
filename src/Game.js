@@ -3,7 +3,7 @@
 // а передавать все нужные объекты прямо из run.js при инициализации new Game().
 
 const readlineSync = require('readline-sync');
-const music = require('play-sound')(args = {});
+const music = require('play-sound')();
 
 const runInteractiveConsole = require('./keyboard');
 const Hero = require('./game-models/Hero');

@@ -63,8 +63,8 @@ class Game {
     }
     if (this.hero.boomerang.position >= this.enemy.position) {
       this.enemy.die();
-      if (this.timeDelay >= 30) this.timeDelay -= 10;
-      this.gameCycle();
+      // if (this.timeDelay >= 30) this.timeDelay -= 10;
+      // this.gameCycle();
       music.play('./src/sounds/just-like-magic.wav', (err) => {
         if (err) throw err;
       });
@@ -102,13 +102,13 @@ class Game {
   gameCycle() {
     if (this.interval) clearInterval(this.interval);
     this.interval = setInterval(() => {
-      this.timePlay += 0.05;
+      this.timePlay += 0.04;
       // Let's play!
       this.check();
       this.regenerateTrack();
       // eslint-disable-next-line max-len
       this.view.render(this.track, this.hero.score, this.hero.scoreOfSpiders, this.hero.lives, this.timePlay.toFixed(2));
-    }, this.timeDelay);
+    }, 40);
   }
 
   async init() {

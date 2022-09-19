@@ -17,7 +17,7 @@ class View {
     // eslint-disable-next-line no-console
     console.log('Spiders scores(1 for 5 points):', scoreOfSpiders);
     // eslint-disable-next-line no-console
-    console.log('Game time', timePlay);
+    console.log('Game time:', `${timePlay}s`);
     // eslint-disable-next-line no-console
     console.log(`\nCreated by "${yourTeamName}" with love`);
   }

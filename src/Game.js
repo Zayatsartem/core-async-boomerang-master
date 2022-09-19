@@ -23,7 +23,10 @@ class Game {
     this.spider = new Spider();
     this.view = new View();
     this.track = [];
+    this.timePlay = 0;
     this.regenerateTrack();
+    this.timeDelay = 150;
+    this.interval
   }
 
   regenerateTrack() {
@@ -52,12 +55,14 @@ class Game {
     }
     if (this.hero.lives === 0) {
       this.hero.die();
+      clearInterval(this.interval);
     }
     if (this.hero.position < 0) {
       this.hero.position = 0;
     }
     if (this.hero.boomerang.position >= this.enemy.position) {
       this.enemy.die();
+      this.timeDelay -= 50;
       music.play('./src/sounds/just-like-magic.wav', (err) => {
         if (err) throw err;
       });
@@ -89,12 +94,14 @@ class Game {
 
   play() {
     runInteractiveConsole(this.hero, (this.trackLength - 1));
-    setInterval(() => {
+    this.interval = setInterval(() => {
+      this.timePlay += 0.05;
       // Let's play!
       this.check();
       this.regenerateTrack();
-      this.view.render(this.track, this.hero.score, this.hero.scoreOfSpiders, this.hero.lives);
-    }, 100);
+      // eslint-disable-next-line max-len
+      this.view.render(this.track, this.hero.score, this.hero.scoreOfSpiders, this.hero.lives, this.timePlay.toFixed(2));
+    }, 20);
   }
 
   async init() {

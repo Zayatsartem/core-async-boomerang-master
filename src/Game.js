@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-expressions */
 // Импортируем всё необходимое.
 // Или можно не импортировать,
 // а передавать все нужные объекты прямо из run.js при инициализации new Game().
@@ -11,7 +12,7 @@ const Enemy = require('./game-models/Enemy');
 // const Boomerang = require('./game-models/Boomerang');
 const View = require('./View');
 const Spider = require('./game-models/Spider');
-const registerUser = require('../index');
+// const registerUser = require('../index');
 // Основной класс игры.
 // Тут будут все настройки, проверки, запуск.
 
@@ -25,8 +26,8 @@ class Game {
     this.track = [];
     this.timePlay = 0;
     this.regenerateTrack();
-    this.timeDelay = 150;
-    this.interval
+    this.timeDelay = 170;
+    this.interval;
   }
 
   regenerateTrack() {
@@ -62,7 +63,8 @@ class Game {
     }
     if (this.hero.boomerang.position >= this.enemy.position) {
       this.enemy.die();
-      this.timeDelay -= 50;
+      if (this.timeDelay >= 30) this.timeDelay -= 10;
+      this.gameCycle();
       music.play('./src/sounds/just-like-magic.wav', (err) => {
         if (err) throw err;
       });
@@ -94,6 +96,11 @@ class Game {
 
   play() {
     runInteractiveConsole(this.hero, (this.trackLength - 1));
+    this.gameCycle();
+  }
+
+  gameCycle() {
+    if (this.interval) clearInterval(this.interval);
     this.interval = setInterval(() => {
       this.timePlay += 0.05;
       // Let's play!
@@ -101,7 +108,7 @@ class Game {
       this.regenerateTrack();
       // eslint-disable-next-line max-len
       this.view.render(this.track, this.hero.score, this.hero.scoreOfSpiders, this.hero.lives, this.timePlay.toFixed(2));
-    }, 20);
+    }, this.timeDelay);
   }
 
   async init() {

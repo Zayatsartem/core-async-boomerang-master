@@ -5,9 +5,10 @@ class Spider {
     this.position = this.randomPos();
   }
 
+  // eslint-disable-next-line class-methods-use-this
   randomPos() {
     // Идём влево.
-    return Math.round(Math.random() * (40 - 20) + 20);
+    return Math.round(Math.random() * (40 - 10) + 10);
   }
 
   pick() {
